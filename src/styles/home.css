@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    /* flex-direction: row; */
+}
+
+.divide-part2 {
+    flex: 1;
+    background-color: red;
+}
+
+.divide-part {
+    flex: 1;
+    background-color: blue;
+}
