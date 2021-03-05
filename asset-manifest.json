@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/luckywheel/home/static/css/main.457f8446.chunk.css",
-    "main.js": "/luckywheel/home/static/js/main.e635ab10.chunk.js",
-    "main.js.map": "/luckywheel/home/static/js/main.e635ab10.chunk.js.map",
-    "runtime-main.js": "/luckywheel/home/static/js/runtime-main.942d5377.js",
-    "runtime-main.js.map": "/luckywheel/home/static/js/runtime-main.942d5377.js.map",
-    "static/js/2.11a479dc.chunk.js": "/luckywheel/home/static/js/2.11a479dc.chunk.js",
-    "static/js/2.11a479dc.chunk.js.map": "/luckywheel/home/static/js/2.11a479dc.chunk.js.map",
-    "index.html": "/luckywheel/home/index.html",
-    "static/css/main.457f8446.chunk.css.map": "/luckywheel/home/static/css/main.457f8446.chunk.css.map",
-    "static/js/2.11a479dc.chunk.js.LICENSE.txt": "/luckywheel/home/static/js/2.11a479dc.chunk.js.LICENSE.txt"
+    "main.css": "/luckywheel/static/css/main.457f8446.chunk.css",
+    "main.js": "/luckywheel/static/js/main.cf65d26e.chunk.js",
+    "main.js.map": "/luckywheel/static/js/main.cf65d26e.chunk.js.map",
+    "runtime-main.js": "/luckywheel/static/js/runtime-main.04f1d9cb.js",
+    "runtime-main.js.map": "/luckywheel/static/js/runtime-main.04f1d9cb.js.map",
+    "static/js/2.11a479dc.chunk.js": "/luckywheel/static/js/2.11a479dc.chunk.js",
+    "static/js/2.11a479dc.chunk.js.map": "/luckywheel/static/js/2.11a479dc.chunk.js.map",
+    "index.html": "/luckywheel/index.html",
+    "static/css/main.457f8446.chunk.css.map": "/luckywheel/static/css/main.457f8446.chunk.css.map",
+    "static/js/2.11a479dc.chunk.js.LICENSE.txt": "/luckywheel/static/js/2.11a479dc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.942d5377.js",
+    "static/js/runtime-main.04f1d9cb.js",
     "static/js/2.11a479dc.chunk.js",
     "static/css/main.457f8446.chunk.css",
-    "static/js/main.e635ab10.chunk.js"
+    "static/js/main.cf65d26e.chunk.js"
   ]
 }
