@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/luckywheel/static/css/main.457f8446.chunk.css",
-    "main.js": "/luckywheel/static/js/main.cf65d26e.chunk.js",
-    "main.js.map": "/luckywheel/static/js/main.cf65d26e.chunk.js.map",
+    "main.js": "/luckywheel/static/js/main.ebbc16f7.chunk.js",
+    "main.js.map": "/luckywheel/static/js/main.ebbc16f7.chunk.js.map",
     "runtime-main.js": "/luckywheel/static/js/runtime-main.04f1d9cb.js",
     "runtime-main.js.map": "/luckywheel/static/js/runtime-main.04f1d9cb.js.map",
     "static/js/2.11a479dc.chunk.js": "/luckywheel/static/js/2.11a479dc.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.04f1d9cb.js",
     "static/js/2.11a479dc.chunk.js",
     "static/css/main.457f8446.chunk.css",
-    "static/js/main.cf65d26e.chunk.js"
+    "static/js/main.ebbc16f7.chunk.js"
   ]
 }
