@@ -1,25 +1,12 @@
-import React from 'react'
-import {
-  BrowserRouter as Router, Switch, Route, Link
-} from 'react-router-dom'
-import {Home} from './screens/home'
-import {Admin} from './screens/admin'
+import React, { Component } from 'react';
+import Main from './components/Main'
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <Switch>
-          <Route path='/'>
-            <Home/>
-          </Route>
-          <Route path='/admin'>
-            <Admin/>
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Main />
+    );
+  }
 }
 
 export default App;
