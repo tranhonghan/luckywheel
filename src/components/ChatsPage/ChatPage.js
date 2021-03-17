@@ -13,6 +13,7 @@ export class ChatPage extends Component {
 
   constructor() {
     super()
+    this.refWheel = null
   }
 
   state = {
@@ -109,7 +110,6 @@ export class ChatPage extends Component {
     } else {
       socket.emit( events.MESSAGE_SEND, { channel: activeChannel.name, msg })
     }
-
   }
 
   sendTyping = isTyping => {
@@ -144,7 +144,7 @@ export class ChatPage extends Component {
       }
       return null
     })
-    // this.setState({chats, typeWheel: data.value, dataWheel: this.getDataWheel(data.value)})
+
     this.setState({chats})
   }
 
@@ -157,6 +157,8 @@ export class ChatPage extends Component {
       }
       return null
     })
+
+    this.refWheel.swivelWheel(data.index)
 
     setTimeout(() => {
       this.setState(chats)
@@ -226,6 +228,7 @@ export class ChatPage extends Component {
                   value={activeChannel.typeWheel}
                 />
                 <Wheel 
+                  ref={(ref) => this.refWheel = ref}
                   items={activeChannel.dataWheel}
                   onSelectItem={this.onSelectItemWheel}
                 />

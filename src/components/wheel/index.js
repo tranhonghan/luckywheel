@@ -18,11 +18,14 @@ export default class Wheel extends React.Component {
       if (this.props.onSelectItem) {
         this.props.onSelectItem({index: selectedItem, value: items[selectedItem]});
       }
-      this.setState({ selectedItem });
     } else {
       this.setState({ selectedItem: null });
-      setTimeout(this.selectItem, 1000);
+      setTimeout(this.selectItem, 2000);
     }
+  }
+
+  swivelWheel(selectedItem) {
+    this.setState({ selectedItem });
   }
 
   render() {
