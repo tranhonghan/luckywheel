@@ -104,11 +104,11 @@ export class Sidebar extends Component {
               Login as : {user.nickname[0].toUpperCase() + user.nickname.slice(1)}
             </Header.Subheader>
           </Header>
-          <Button.Group style={{marginTop: '15px', marginBottom: '15px'}}>
+          {/* <Button.Group style={{marginTop: '15px', marginBottom: '15px'}}>
             <Button>One</Button>
             <Button>Two</Button>
             <Button>Three</Button>
-          </Button.Group>
+          </Button.Group> */}
           <Menu.Menu>
             <Menu.Item style={{ paddingLeft: '0' }}>
               <span style={{ fontSize: '1.2em' }}>

@@ -1,3 +1,11 @@
+const AppConstants = require('../src/Constants/AppConstants')
+
+const optionSelect = [
+    {key: '1', value: 'cake', text: 'cake'},
+    {key: '2', value: 'juice', text: 'juice'},
+    {key: '3', value: 'fruit', text: 'fruit'}
+  ]
+
 const uuid = require('uuid/v4')
 
 const isUser = ( users, nickname ) => nickname in users 
@@ -14,7 +22,10 @@ const createChat = ({ name='Community', description='Public room' } = {}) => ({
     description,
     messages: [],
     msgCount: 0,
-    typingUser: []
+    typingUser: [],
+    dataWheel: AppConstants.CAKE,
+    typeWheel: AppConstants.OPTION_SELECT[0].value,
+    resultWheel: null
 })
 
 const isChannel = ( channelName, chats ) => chats.includes( channelName )

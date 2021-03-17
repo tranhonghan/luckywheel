@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import events from '../../events'
-import AppConstants from '../Constants/AppConstants'
 import { Grid } from 'semantic-ui-react'
 import Sidebar from './Sidebar';
 import MessageHeader from './MessageHeader'
@@ -8,12 +7,7 @@ import MessagesBody from './MessagesBody'
 import MessageInput from './MessageInput'
 import Wheel from '../wheel';
 import { Dropdown } from 'semantic-ui-react'
-
-const optionSelect = [
-  {key: '1', value: 'cake', text: 'cake'},
-  {key: '2', value: 'juice', text: 'juice'},
-  {key: '3', value: 'fruit', text: 'fruit'}
-]
+import AppConstants from '../../Constants/AppConstants'
 
 export class ChatPage extends Component {
 
@@ -23,10 +17,11 @@ export class ChatPage extends Component {
 
   state = {
     chats: [],
-    activeChannel: null,
-    dataWheel: AppConstants.CAKE,
-    typeWheel: optionSelect[0].value,
-    resultWheel: null
+    activeChannel: null
+  }
+
+  initActiveChannel = () => {
+    
   }
 
   componentDidMount(){
@@ -226,7 +221,7 @@ export class ChatPage extends Component {
                 <Dropdown 
                   search 
                   selection 
-                  options={optionSelect}
+                  options={AppConstants.OPTION_SELECT}
                   onChange={this.onChangeSelect}
                   value={activeChannel.typeWheel}
                 />
