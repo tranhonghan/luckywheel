@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import events from '../../events'
+import AppConstants from '../Constants/AppConstants'
 import { Grid } from 'semantic-ui-react'
 import Sidebar from './Sidebar';
 import MessageHeader from './MessageHeader'
@@ -23,7 +24,9 @@ export class ChatPage extends Component {
   state = {
     chats: [],
     activeChannel: null,
-    typeWheel: ['Banh Pizza', 'Banh Sandwiches', 'Banh Quy', 'Banh Trung', 'Banh Tet']
+    dataWheel: AppConstants.CAKE,
+    typeWheel: optionSelect[0].value,
+    resultWheel: null
   }
 
   componentDidMount(){
@@ -34,6 +37,8 @@ export class ChatPage extends Component {
     socket.on( events.P_MESSAGE_SEND, this.addPMessage )
     socket.on( events.P_TYPING, this.addPTyping)
     socket.on( events.CREATE_CHANNEL, this.updateChats )
+    socket.on( events.TYPE_WHEEL, this.updateTypeWheel )
+    socket.on( events.RESULT_WHEEL, this.updateResultWheel )
   }
 
   initChats =  _chats  => this.updateChats( _chats, true )
@@ -134,20 +139,74 @@ export class ChatPage extends Component {
     this.setState({ activeChannel: newActive[0] })
   }
 
+  updateTypeWheel = ({ channel, data }) => {
+    let { activeChannel, chats } = this.state
+
+    chats.map( chat => {
+      if ( chat.name === channel ) {
+        chat.typeWheel = data.value
+        chat.dataWheel = this.getDataWheel(data.value)
+      }
+      return null
+    })
+    // this.setState({chats, typeWheel: data.value, dataWheel: this.getDataWheel(data.value)})
+    this.setState({chats})
+  }
+
+  updateResultWheel = ({ channel, data }) => {
+    let { activeChannel, chats } = this.state
+
+    chats.map( chat => {
+      if ( chat.name === channel ) {
+        chat.resultWheel = data.value
+      }
+      return null
+    })
+
+    setTimeout(() => {
+      this.setState(chats)
+    }, 4000);
+  }
+
   onChangeSelect = (e, data) => {
-    console.log("Item data: ", data);
-    if (data.value === 'cake') {
-      this.setState({typeWheel: ['Banh Pizza', 'Banh Sandwiches', 'Banh Quy', 'Banh Trung', 'Banh Tet']})
-    } else if (data.value === 'fruit') {
-      this.setState({typeWheel: ['Tao', 'Xoai', 'Oi' , 'Man', 'Dua', 'Quyt']})
-    } else if (data.value === 'juice') {
-      this.setState({typeWheel: ['Nuoc Cam', 'Nuoc Xoai', 'Nuoc Man Ep', 'Nuoc Mia', 'Nuoc Ngot', 'Tra O Long']})
+    let { socket, users } = this.props
+    let { activeChannel } = this.state
+
+    this.setState({dataWheel: this.getDataWheel(data.value)})
+    if ( activeChannel.type ) {
+      let  receiver = users[ activeChannel.name ]
+      socket.emit( events.P_TYPE_WHEEL, { receiver, data })
+    } else {
+      socket.emit( events.TYPE_WHEEL, { channel: activeChannel.name, data})
+    }
+
+  }
+
+  onSelectItemWheel = data => {
+    let { socket, users } = this.props
+    let { activeChannel } = this.state
+
+    if ( activeChannel.type ) {
+      let receiver = users[ activeChannel.name ]
+      socket.emit( events.P_RESULT_WHEEL, { receiver, data })
+    } else {
+      socket.emit( events.RESULT_WHEEL, {channel: activeChannel.name, data })
     }
   }
+
+  getDataWheel = (typeWheel) => {
+    if (typeWheel === 'cake') {
+      return AppConstants.CAKE
+    } else if (typeWheel === 'fruit') {
+      return AppConstants.FRUIT
+    } else if (typeWheel === 'juice') {
+      return AppConstants.JUICE
+    }
+  } 
  
   render() {
     let { user, users, pChats, logout, socket } = this.props
-    let { activeChannel, chats, typeWheel } = this.state
+    let { activeChannel, chats, dataWheel, typeWheel} = this.state
     return (
       <Grid style={{ height: '100vh', margin: '0px'}}>
         <Grid.Column computer={12} tablet={ 12 } mobile={10} style={{ background: '#eee', height: '100%'}}>
@@ -168,10 +227,16 @@ export class ChatPage extends Component {
                   search 
                   selection 
                   options={optionSelect}
-                  defaultValue={optionSelect[0].value} 
                   onChange={this.onChangeSelect}
+                  value={activeChannel.typeWheel}
                 />
-                <Wheel items={typeWheel} />
+                <Wheel 
+                  items={activeChannel.dataWheel}
+                  onSelectItem={this.onSelectItemWheel}
+                />
+              </div>
+              <div style={{justifyContent: 'center', alignItems: 'center'}}>
+                <h1 style={{textAlign: 'center'}}>Ket Qua: {activeChannel.resultWheel}</h1>
               </div>
             </React.Fragment>
           ) 
